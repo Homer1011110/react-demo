@@ -9,7 +9,12 @@ import {
     Switch,
 } from 'react-router-dom'
 import ThemeContext, { themes } from '../context/theme'
+import HomePage from './HomePage'
+import ActPage from './ActPage'
 
+function asyncImport() {
+    return import(/* webpackChunkName: "homepage" */ './HomePage')
+}
 
 
 class App extends Component {
@@ -26,15 +31,16 @@ class App extends Component {
     render() {
         return (
             <ThemeContext.Provider
-                value={
+                value={{
                     themes,
                     theme: this.state.theme,
                     toggleTheme: this.toggleTheme,
-                }
+                }}
             >
                 <Router>
                     <Switch>
-                        T/<Route exact path="/" component={Home}></Route>
+                        <Route exact path="/" component={HomePage}></Route>
+                        <Route path="/act" component={ActPage}></Route>
                         {/* <Route path="/about" component={About}></Route>
                         <Route path="/topics" component={Topics}></Route>
                         <Route

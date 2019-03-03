@@ -9,6 +9,7 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'static/js')
     },
     /* optimization: {
@@ -16,7 +17,7 @@ module.exports = {
             chunks: 'all',
         }
     }, */
-    optimization: {
+    /* optimization: {
         splitChunks: {
             chunks: 'async',
             minSize: 30000,
@@ -38,7 +39,7 @@ module.exports = {
                 }
             }
         }
-    },
+    }, */
     module: {
         rules: [
             { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader" }
