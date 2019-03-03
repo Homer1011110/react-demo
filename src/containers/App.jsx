@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import {
     BrowserRouter as Router,
     Route,
@@ -9,13 +9,8 @@ import {
     Switch,
 } from 'react-router-dom'
 import ThemeContext, { themes } from '../context/theme'
-import HomePage from './HomePage'
-import ActPage from './ActPage'
-
-function asyncImport() {
-    return import(/* webpackChunkName: "homepage" */ './HomePage')
-}
-
+const HomePage = React.lazy(() => import(/* webpackChunkName: "homepage" */ './HomePage'))
+const ActPage = React.lazy(() =>  import(/* webpackChunkName: "actpage" */ './ActPage'))
 
 class App extends Component {
     state = {
@@ -38,15 +33,20 @@ class App extends Component {
                 }}
             >
                 <Router>
-                    <Switch>
-                        <Route exact path="/" component={HomePage}></Route>
-                        <Route path="/act" component={ActPage}></Route>
-                        {/* <Route path="/about" component={About}></Route>
-                        <Route path="/topics" component={Topics}></Route>
-                        <Route
-                            component={Always}
-                        ></Route> */}
-                    </Switch>
+                    <Suspense
+                        fallback={<div>loading...</div>}
+                    >
+                        <Switch>
+                            <Route exact path="/" component={HomePage}></Route>
+                            <Route path="/act" component={ActPage}></Route>
+                            {/* <Route path="/about" component={About}></Route>
+                            <Route path="/topics" component={Topics}></Route>
+                            <Route
+                                component={Always}
+                            ></Route> */}
+                        </Switch>
+                    </Suspense>
+
                     {/* <div>
                         <ul>
                             <li><NavLink to="/" activeClassName='hurray'>Home</NavLink></li>
