@@ -8,8 +8,8 @@ module.exports = {
         // b: './src/b.js',
     },
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].bundle.[chunkhash].js',
+        chunkFilename: '[name].bundle.[chunkhash].js',
         path: path.resolve(__dirname, 'static/js'),
         publicPath: '/js/',
     },
