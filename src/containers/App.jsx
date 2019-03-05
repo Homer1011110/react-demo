@@ -11,6 +11,8 @@ import {
 import ThemeContext, { themes } from '../context/theme'
 const HomePage = React.lazy(() => import(/* webpackChunkName: "homepage" */ './HomePage'))
 const ActPage = React.lazy(() =>  import(/* webpackChunkName: "actpage" */ './ActPage'))
+const UserPage = React.lazy(() =>  import(/* webpackChunkName: "userpage" */ './UserPage'))
+const DetailPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ './DetailPage'))
 
 class App extends Component {
     state = {
@@ -39,6 +41,8 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={HomePage}></Route>
                             <Route path="/act" component={ActPage}></Route>
+                            <Route path="/detail" component={DetailPage}></Route>
+                            <Route path="/user" component={UserPage}></Route>
                             {/* <Route path="/about" component={About}></Route>
                             <Route path="/topics" component={Topics}></Route>
                             <Route

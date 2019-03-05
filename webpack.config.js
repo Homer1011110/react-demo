@@ -8,17 +8,22 @@ module.exports = {
         // b: './src/b.js',
     },
     output: {
-        filename: '[name].bundle.[chunkhash].js',
-        chunkFilename: '[name].bundle.[chunkhash].js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'static/js'),
         publicPath: '/js/',
     },
-    /* optimization: {
+    optimization: {
         splitChunks: {
-            chunks: 'all',
+            cacheGroups: {
+                common: {
+                    name: 'common',
+                    chunks: 'all',
+                    test: /[\\/]node_modules[\\/]/,
+                },
+            },
         }
-    }, */
-    optimization: {},
+    },
     /* optimization: {
         splitChunks: {
             chunks: 'async',
