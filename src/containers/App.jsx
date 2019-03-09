@@ -20,10 +20,17 @@ class App extends Component {
         theme: themes.light,
     }
 
-    toggleTheme = (theme) => {
+    toggleTheme(theme) {
         this.setState({
             theme: themes[theme]
         })
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            throw 'test'
+            /* this.setState() */
+        }, 3 * 1000)
     }
 
     render() {

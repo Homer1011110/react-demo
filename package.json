@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-web": "webpack --mode=development --watch --progress",
-    "build-web": "webpack --progress"
+    "dev-web": "cd webpack && webpack --watch --progress --config webpack.dev.js",
+    "build-web": "cd webpack && webpack --progress --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +20,8 @@
     "clean-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.29.4",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",

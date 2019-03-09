@@ -2,17 +2,16 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-let hasLogged = false
+const projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
     entry: {
-        a: './src/a.js',
-        // b: './src/b.js',
+        a: '../src/a.js',
     },
     output: {
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'static/js'),
+        filename: '[name].js',
+        chunkFilename: '[name].js',
+        path: path.resolve(projectRoot, 'static/js'),
         publicPath: '/js/',
     },
     optimization: {
@@ -58,14 +57,30 @@ module.exports = {
     }, */
     module: {
         rules: [
-            { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader" }
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                options: {
+                    babelrcRoots: [
+                        // Keep the root as a root
+                        "../",
+
+                        // Also consider monorepo packages "root" and load their .babelrc files.
+                        // "./packages/*"
+                    ]
+                    /* rootMode: "upward", */
+                }
+            }
         ],
     },
     plugins: [
-        new CleanWebpackPlugin(['static']),
+        new CleanWebpackPlugin([
+            path.resolve(projectRoot, 'static'),
+        ], { allowExternal: true }),
         new HtmlWebpackPlugin({
             filename: '../index.html',
-            template: 'src/tpls/index.tpl'
+            template: path.resolve(projectRoot, 'src/tpls/index.tpl')
         })
     ],
     resolve: {

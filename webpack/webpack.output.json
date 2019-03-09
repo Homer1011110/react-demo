@@ -1,0 +1,76 @@
+{
+    "entry": {
+        "a": "../src/a.js"
+    },
+    "output": {
+        "filename": "[name].[chunkhash].js",
+        "chunkFilename": "[name].[chunkhash].js",
+        "path": "/home/homerwang/projects/code-split/static/js",
+        "publicPath": "/js/"
+    },
+    "optimization": {
+        "splitChunks": {
+            "cacheGroups": {
+                "vendors": {
+                    "name": "vendors",
+                    "chunks": "all",
+                    "test": {}
+                }
+            }
+        }
+    },
+    "module": {
+        "rules": [
+            {
+                "test": {},
+                "exclude": {},
+                "loader": "babel-loader",
+                "options": {
+                    "babelrcRoots": [
+                        "../"
+                    ]
+                }
+            }
+        ]
+    },
+    "plugins": [
+        {
+            "paths": [
+                "/home/homerwang/projects/code-split/static"
+            ],
+            "options": {
+                "allowExternal": true,
+                "verbose": true,
+                "dry": false,
+                "root": "/home/homerwang/projects/code-split/webpack"
+            }
+        },
+        {
+            "options": {
+                "template": "/home/homerwang/projects/code-split/src/tpls/index.tpl",
+                "filename": "../index.html",
+                "hash": false,
+                "inject": true,
+                "compile": true,
+                "favicon": false,
+                "minify": false,
+                "cache": true,
+                "showErrors": true,
+                "chunks": "all",
+                "excludeChunks": [],
+                "chunksSortMode": "auto",
+                "meta": {},
+                "title": "Webpack App",
+                "xhtml": false
+            }
+        }
+    ],
+    "resolve": {
+        "extensions": [
+            ".js",
+            ".jsx"
+        ]
+    },
+    "mode": "production",
+    "devtool": "source-map"
+}
