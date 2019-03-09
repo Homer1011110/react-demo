@@ -2,25 +2,34 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
+let hasLogged = false
+
 module.exports = {
     entry: {
         a: './src/a.js',
         // b: './src/b.js',
     },
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash].js',
         path: path.resolve(__dirname, 'static/js'),
         publicPath: '/js/',
     },
     optimization: {
         splitChunks: {
             cacheGroups: {
-                common: {
-                    name: 'common',
+                vendors: {
+                    name: 'vendors',
                     chunks: 'all',
                     test: /[\\/]node_modules[\\/]/,
                 },
+                /* commonbiz: {
+                    minSize: 1,
+                    name: 'commonbiz',
+                    chunks: 'all',
+                    test: /[\\/]src\/lib[\\/]/,
+                    priority: 10,
+                }, */
             },
         }
     },

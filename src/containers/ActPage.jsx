@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import ThemeContext from '../context/theme'
+import { util } from '../lib'
 
 const ActPage = ({ history, match, location }) => (
     <ThemeContext.Consumer>

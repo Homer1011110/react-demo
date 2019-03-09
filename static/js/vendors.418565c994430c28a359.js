@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors"],{
 
 /***/ "./node_modules/history/es/DOMUtils.js":
 /*!*********************************************!*\

@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React, { Component, Suspense } from 'react'
+import { util } from '../lib'
 import {
     BrowserRouter as Router,
     Route,
