@@ -23,13 +23,6 @@ module.exports = {
                     chunks: 'all',
                     test: /[\\/]node_modules[\\/]/,
                 },
-                /* commonbiz: {
-                    minSize: 1,
-                    name: 'commonbiz',
-                    chunks: 'all',
-                    test: /[\\/]src\/lib[\\/]/,
-                    priority: 10,
-                }, */
             },
         }
     },
