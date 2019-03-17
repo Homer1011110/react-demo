@@ -3,8 +3,8 @@
         "a": "../src/a.js"
     },
     "output": {
-        "filename": "[name].[chunkhash].js",
-        "chunkFilename": "[name].[chunkhash].js",
+        "filename": "[name].js",
+        "chunkFilename": "[name].js",
         "path": "/home/homerwang/projects/code-split/static/js",
         "publicPath": "/js/"
     },
@@ -15,6 +15,14 @@
                     "name": "vendors",
                     "chunks": "all",
                     "test": {}
+                },
+                "common": {
+                    "name": "common",
+                    "chunks": "all",
+                    "test": {},
+                    "minSize": 1,
+                    "minChunks": 2,
+                    "priority": 1
                 }
             }
         }
@@ -79,6 +87,6 @@
             ".jsx"
         ]
     },
-    "mode": "production",
-    "devtool": "source-map"
+    "mode": "development",
+    "devtool": "inline-source-map"
 }

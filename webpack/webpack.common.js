@@ -23,6 +23,14 @@ module.exports = {
                     chunks: 'all',
                     test: /[\\/]node_modules[\\/]/,
                 },
+                common: {
+                    name: 'common',
+                    chunks: 'all',
+                    test: /[\\/]src\/lib[\\/]/,
+                    minSize: 1,
+                    minChunks: 2,
+                    priority: 1,
+                },
             },
         }
     },
