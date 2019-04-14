@@ -10,10 +10,9 @@ import {
     Switch,
 } from 'react-router-dom'
 import ThemeContext, { themes } from '../context/theme'
-const HomePage = React.lazy(() => import(/* webpackChunkName: "homepage" */ './HomePage'))
-const ActPage = React.lazy(() =>  import(/* webpackChunkName: "actpage" */ './ActPage'))
-const UserPage = React.lazy(() =>  import(/* webpackChunkName: "userpage" */ './UserPage'))
-const DetailPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ './DetailPage'))
+const HomePage = React.lazy(() => import(/* webpackChunkName: "homepage" */ '../pages/home'))
+const SearchPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ '../pages/search'))
+const NotFoundPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ '../pages/404'))
 
 class App extends Component {
     state = {
@@ -24,13 +23,6 @@ class App extends Component {
         this.setState({
             theme: themes[theme]
         })
-    }
-
-    componentDidMount() {
-        setTimeout(() => {
-            throw 'test'
-            /* this.setState() */
-        }, 3 * 1000)
     }
 
     render() {
@@ -48,14 +40,10 @@ class App extends Component {
                     >
                         <Switch>
                             <Route exact path="/" component={HomePage}></Route>
-                            <Route path="/act" component={ActPage}></Route>
-                            <Route path="/detail" component={DetailPage}></Route>
-                            <Route path="/user" component={UserPage}></Route>
-                            {/* <Route path="/about" component={About}></Route>
-                            <Route path="/topics" component={Topics}></Route>
+                            <Route path="/search" component={SearchPage}></Route>
                             <Route
-                                component={Always}
-                            ></Route> */}
+                                component={NotFoundPage}
+                            ></Route>
                         </Switch>
                     </Suspense>
 

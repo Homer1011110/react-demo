@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "tYyp");
 /* harmony import */ var _context_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/theme */ "sdih");
 /* harmony import */ var _lib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib */ "nBnF");
-var _jsxFileName = "/home/homerwang/projects/code-split/src/containers/ActPage.jsx";
+var _jsxFileName = "/Users/homerwang/projects/react-demo/src/containers/ActPage.jsx";
 
 
 

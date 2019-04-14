@@ -5,7 +5,7 @@
     "output": {
         "filename": "[name].js",
         "chunkFilename": "[name].js",
-        "path": "/home/homerwang/projects/code-split/static/js",
+        "path": "/Users/homerwang/projects/react-demo/static/js",
         "publicPath": "/js/"
     },
     "optimization": {
@@ -52,18 +52,18 @@
         },
         {
             "paths": [
-                "/home/homerwang/projects/code-split/static"
+                "/Users/homerwang/projects/react-demo/static"
             ],
             "options": {
                 "allowExternal": true,
                 "verbose": true,
                 "dry": false,
-                "root": "/home/homerwang/projects/code-split/webpack"
+                "root": "/Users/homerwang/projects/react-demo/webpack"
             }
         },
         {
             "options": {
-                "template": "/home/homerwang/projects/code-split/src/tpls/index.tpl",
+                "template": "/Users/homerwang/projects/react-demo/src/tpls/index.tpl",
                 "filename": "../index.html",
                 "hash": false,
                 "inject": true,
