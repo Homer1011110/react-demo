@@ -13,7 +13,7 @@ function reducer(state, action) {
         case 'reset':
             return { search: '' }
         default:
-            throw new Error();
+            return state
     }
 }
 
@@ -36,10 +36,9 @@ const Page = ({ history, match, location }) => {
             <div
                 style={{ backgroundColor: backgroundColor, color: textColor }}
             >
-                <div className="header">
-                    <span className="icon"></span>
+                <div>
+                    <span>search:</span>
                     <input
-                        className="input"
                         type="text"
                         value={ search }
                         onChange={ (e) => actionCreators.inputSearch(dispatch, e.target.value) }
