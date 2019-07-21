@@ -1,0 +1,45 @@
+$footer-height: 50px;
+
+.body {
+  padding-bottom: $footer-height;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: right;
+  background-color: #eee;
+}
+
+.condition {
+  display: flex;
+
+  .ant-input {
+    max-width: 100px;
+  }
+
+  .ant-select {
+    max-width: 170px;
+  }
+
+  .ant-form-inline {
+    .ant-form-item:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  .content {
+    max-width: 400px;
+    border: 1px solid #000;
+    // flex: 1,
+    // display: inline-block;
+  }
+  .sub-condition-list {
+    flex: 1;
+    border: 1px solid #000;
+    // display: inline-block;
+  }
+}

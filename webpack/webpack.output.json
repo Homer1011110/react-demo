@@ -38,6 +38,21 @@
                         "../"
                     ]
                 }
+            },
+            {
+                "test": {},
+                "use": [
+                    "style-loader",
+                    "css-loader"
+                ]
+            },
+            {
+                "test": {},
+                "use": [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
             }
         ]
     },

@@ -12,6 +12,7 @@ import {
 import ThemeContext, { themes } from '../context/theme'
 const HomePage = React.lazy(() => import(/* webpackChunkName: "homepage" */ '../pages/home'))
 const SearchPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ '../pages/search'))
+const DetailPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ '../pages/detail'))
 const NotFoundPage = React.lazy(() =>  import(/* webpackChunkName: "detailpage" */ '../pages/404'))
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={HomePage}></Route>
                             <Route path="/search" component={SearchPage}></Route>
+                            <Route path="/detail" component={DetailPage}></Route>
                             <Route
                                 component={NotFoundPage}
                             ></Route>
