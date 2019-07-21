@@ -4,7 +4,7 @@ import { Button } from 'antd'
 
 import ThemeContext from '../../context/theme'
 import Condition, { TYPE_MAP, ConditionModel } from './Condition'
-import { normalizeConditions } from './util'
+import { normalizeConditions, normalizeEvent } from './util'
 
 import './index.scss'
 
@@ -17,7 +17,13 @@ const Page = () => {
   const handleSubmit = useCallback(() => {
     console.log(JSON.stringify(data))
     const conditions = normalizeConditions(data)
-    console.log(JSON.stringify(conditions))
+    const event = normalizeEvent('event1')
+    const rule = {
+      conditions,
+      event,
+      priority: 1,
+    }
+    console.log(JSON.stringify(rule))
   }, [data])
 
   return (

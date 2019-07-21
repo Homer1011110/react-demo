@@ -14,3 +14,7 @@ export function normalizeConditions(data) {
     }
   }
 }
+
+export function normalizeEvent(type, priority=1) {
+  return { type, priority }
+}
