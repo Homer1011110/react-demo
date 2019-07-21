@@ -1,5 +1,5 @@
 import React, { useCallback, memo } from 'react'
-import { Tag, Select, Button, Form, Input } from 'antd'
+import { Select, Form, Input, Icon } from 'antd'
 const { Item: FormItem } = Form
 const { Option } = Select
 
@@ -12,30 +12,35 @@ export const TYPE_MAP = {
 const TYPES = Object.values(TYPE_MAP)
 
 export class ConditionModel {
-  constructor({ type, fact='', operator='', value='', subConditions=[] }) {
+  constructor({ type, fact='', operator='', value='', subConditions=[], priority=1 }) {
     this.type = type
     this.id = parseInt(Math.random() * 100000000)
     this.fact = fact
     this.operator = operator
     this.value = value
     this.subConditions = subConditions
+    this.priority = priority
   }
 }
 
 const All = memo(() => {
-  return (
-    <div className="all">
-      <Tag color="blue">all</Tag>
-    </div>
-  )
+  return null
+
+  // return (
+  //   <div className="all">
+  //     <Tag color="blue">all</Tag>
+  //   </div>
+  // )
 })
 
 const Any = memo(() => {
-  return (
-    <div className="any">
-      <Tag color="purple">purple</Tag>
-    </div>
-  )
+  return null
+
+  // return (
+  //   <div className="any">
+  //     <Tag color="purple">purple</Tag>
+  //   </div>
+  // )
 })
 
 const OPERATORS = [
@@ -109,11 +114,12 @@ const SubComponentMap = {
   [TYPE_MAP.EXPRESSION]: Expression,
 }
 
-const Condition = memo(({ index, data, onChange }) => {
+const Condition = memo(({ index, data, onChange, onDelete }) => {
   const handlTypeeChange = useCallback((v) => {
     onChange({
       ...data,
-      type: v
+      type: v,
+      subConditions: v === TYPE_MAP.EXPRESSION ? [] : data.subConditions
     }, index)
   }, [data, index, onChange])
 
@@ -146,6 +152,19 @@ const Condition = memo(({ index, data, onChange }) => {
     }, index)
   }, [data, index, onChange])
 
+  const handleSubDelete = useCallback((i) => {
+    onChange({
+      ...data,
+      subConditions: data.subConditions.filter((item, idx) => {
+        return idx !== i
+      })
+    }, index)
+  }, [data, index, onChange])
+
+  const handleDelete = useCallback(() => {
+    onDelete(index)
+  }, [index, onDelete])
+
   const { type, fact, operator, value, subConditions } = data
   const SubComp = SubComponentMap[type]
 
@@ -163,6 +182,11 @@ const Condition = memo(({ index, data, onChange }) => {
           }
         </Select>
         {
+          [TYPE_MAP.ALL, TYPE_MAP.ANY].includes(type) &&
+          <Icon type="plus-square" theme="twoTone" onClick={handleAdd}/>
+        }
+        <Icon type="delete" theme="twoTone" onClick={handleDelete}/>
+        {
           SubComp &&
           <SubComp
             fact={fact}
@@ -170,10 +194,6 @@ const Condition = memo(({ index, data, onChange }) => {
             value={value}
             onChange={handleChange}
           />
-        }
-        {
-          [TYPE_MAP.ALL, TYPE_MAP.ANY].includes(type) &&
-          <Button size="small" onClick={handleAdd}>+子条件</Button>
         }
       </div>
       <div className="sub-condition-list">
@@ -186,6 +206,7 @@ const Condition = memo(({ index, data, onChange }) => {
                 index={i}
                 data={ item }
                 onChange={ handleSubChange }
+                onDelete={ handleSubDelete }
               />
             )
           })
