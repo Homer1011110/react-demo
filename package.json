@@ -42,7 +42,7 @@
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "puppeteer": "^1.18.1",
     "react": "^16.8.2",
